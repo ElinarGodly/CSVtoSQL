@@ -76,6 +76,7 @@ namespace CS.DataLayer
                     }
                 }
             }
+            //films = (cl.Films) films.OrderBy(x => x.FilmName).ToList();
             return films;
         }
 

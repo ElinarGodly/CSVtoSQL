@@ -7,6 +7,7 @@ using CS.ClassLayer;
 using av = CS.ApplicationVariables.ApplicationVariables;
 using cl = CS.ClassLayer.ClassLayer;
 using dl = CS.DataLayer.DataLayer;
+using System.Text.RegularExpressions;
 
 namespace CS.BusinessLayer
 {
@@ -80,7 +81,7 @@ namespace CS.BusinessLayer
             
             code.Add(av.SQLTemplates.actorsInsert);
 
-            for (int index = 0;index < actors.Count-1; index++) 
+            for (int index = 0;index < actors.Count; index++) 
                 if(index==0)
                     code.Add(String.Format(av.SQLTemplates.valueLine, actors[index].PersonID, actors[index].PersonName));
                 else if (index == actors.Count - 1)
@@ -97,7 +98,7 @@ namespace CS.BusinessLayer
             
             code.Add(av.SQLTemplates.directorsInsert);
 
-            for(int index = 0;index < directors.Count-1;index++)
+            for(int index = 0;index < directors.Count;index++)
                 if(index==0)
                     code.Add(String.Format(av.SQLTemplates.valueLine, directors[index].PersonID, directors[index].PersonName));
                 else if (index == directors.Count - 1)
@@ -115,7 +116,7 @@ namespace CS.BusinessLayer
             code.Add(av.SQLTemplates.filmsInsert);
             
 
-            for (int index = 0; index < films.Count - 1; index++)
+            for (int index = 0; index < films.Count; index++)
                 if(index==0)
                     code.Add(String.Format(av.SQLTemplates.valueLineFilms, films[index].FilmID, films[index].FilmName,
                                                                 films[index].ImdbRating, films[index].FilmYear));
@@ -135,7 +136,7 @@ namespace CS.BusinessLayer
 
             code.Add(av.SQLTemplates.filmActorInsert);
 
-            for(int index=0; index < films.Count - 1; index++)
+            for(int index=0; index < films.Count; index++)
                 if (index==0)
                     foreach (var actor in films[index].Actors)
                     {
@@ -161,11 +162,12 @@ namespace CS.BusinessLayer
 
             code.Add(av.SQLTemplates.filmDirectorInsert);
 
-            for (int index = 0;index<films.Count-1;index++)
+            for (int index = 0;index<films.Count;index++)
                 if(index==0)
                     foreach (var director in films[index].Directors)
                     {
-                        code.Add(String.Format(av.SQLTemplates.valueLine, (index + 1).ToString(), directors.FindIndex(p => p.PersonID == director.PersonID)));
+                        string codeLine = String.Format(av.SQLTemplates.valueLine, (index + 1).ToString(), directors.FindIndex(p => p.PersonID == director.PersonID));
+                        code.Add(Regex.Replace(codeLine, "[']", string.Empty));
                     }
                 else if (index == films.Count - 1)
                     foreach (var director in films[index].Directors)
