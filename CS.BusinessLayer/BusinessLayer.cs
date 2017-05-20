@@ -140,17 +140,20 @@ namespace CS.BusinessLayer
                 if (index==0)
                     foreach (var actor in films[index].Actors)
                     {
-                        code.Add(String.Format(av.SQLTemplates.valueLine, (index + 1).ToString(), actors.FindIndex(p=> p.PersonID==actor.PersonID)));
+                        code.Add(Regex.Replace((String.Format(av.SQLTemplates.valueLine, (index + 1).ToString(), 
+                            (actors.FindIndex(p=> p.PersonID==actor.PersonID)+1).ToString())), "[']", string.Empty));
                     }
                 else if(index == films.Count - 1)
                     foreach (var actor in films[index].Actors)
                     {
-                        code.Add(String.Format(av.SQLTemplates.lastLine, (index + 1).ToString(), actors.FindIndex(p => p.PersonID == actor.PersonID)));
+                        code.Add(Regex.Replace((String.Format(av.SQLTemplates.lastLine, (index + 1).ToString(), 
+                            (actors.FindIndex(p => p.PersonID == actor.PersonID) + 1).ToString())), "[']", string.Empty));
                     }
                 else
                     foreach (var actor in films[index].Actors)
                     {
-                        code.Add(String.Format(av.SQLTemplates.line, (index + 1).ToString(), actors.FindIndex(p => p.PersonID == actor.PersonID)));
+                        code.Add(Regex.Replace((String.Format(av.SQLTemplates.line, (index + 1).ToString(), 
+                            (actors.FindIndex(p => p.PersonID == actor.PersonID) + 1).ToString())), "[']", string.Empty));
                     }
 
             return code;
@@ -166,19 +169,21 @@ namespace CS.BusinessLayer
                 if(index==0)
                     foreach (var director in films[index].Directors)
                     {
-                        string codeLine = String.Format(av.SQLTemplates.valueLine, (index + 1).ToString(), directors.FindIndex(p => p.PersonID == director.PersonID));
-                        code.Add(Regex.Replace(codeLine, "[']", string.Empty));
+                        code.Add(Regex.Replace((String.Format(av.SQLTemplates.valueLine, (index + 1).ToString(),
+                                                (directors.FindIndex(p => p.PersonID == director.PersonID) + 1).ToString())), "[']", string.Empty));
                     }
                 else if (index == films.Count - 1)
                     foreach (var director in films[index].Directors)
                     {
-                        code.Add(String.Format(av.SQLTemplates.lastLine, (index + 1).ToString(), directors.FindIndex(p => p.PersonID == director.PersonID)));
+                        code.Add(Regex.Replace((String.Format(av.SQLTemplates.lastLine, (index + 1).ToString(), 
+                                                (directors.FindIndex(p => p.PersonID == director.PersonID) + 1).ToString())), "[']", string.Empty));
                     }
                 else
                     foreach (var director in films[index].Directors)
                     {
-                        code.Add(String.Format(av.SQLTemplates.line, (index + 1).ToString(), directors.FindIndex(p => p.PersonID == director.PersonID)));
-                    }
+                        code.Add(Regex.Replace((String.Format(av.SQLTemplates.line, (index + 1).ToString(), 
+                                (directors.FindIndex(p => p.PersonID == director.PersonID) + 1).ToString())), "[']", string.Empty));
+        }
 
             return code;
         }
