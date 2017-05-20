@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LumenWorks.Framework.IO">
+      <HintPath>bin\LumenWorks.Framework.IO.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,6 +45,19 @@
   <ItemGroup>
     <Compile Include="DataLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ExtendedTestData.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CS.ApplicationVariables\CS.ApplicationVariables.csproj">
+      <Project>{622db1a2-487c-4306-b80c-f2940ed8a807}</Project>
+      <Name>CS.ApplicationVariables</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CS.ClassLayer\CS.ClassLayer.csproj">
+      <Project>{43ad9dd2-aad2-460a-9447-02a4e0c62999}</Project>
+      <Name>CS.ClassLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

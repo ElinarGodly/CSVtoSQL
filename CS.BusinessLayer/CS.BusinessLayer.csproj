@@ -43,5 +43,22 @@
     <Compile Include="BusinessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CS.ApplicationVariables\CS.ApplicationVariables.csproj">
+      <Project>{622db1a2-487c-4306-b80c-f2940ed8a807}</Project>
+      <Name>CS.ApplicationVariables</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CS.ClassLayer\CS.ClassLayer.csproj">
+      <Project>{43ad9dd2-aad2-460a-9447-02a4e0c62999}</Project>
+      <Name>CS.ClassLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CS.DataLayer\CS.DataLayer.csproj">
+      <Project>{1c7c3490-d49c-44b3-b565-acd95190daf2}</Project>
+      <Name>CS.DataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

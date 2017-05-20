@@ -43,5 +43,11 @@
     <Compile Include="ClassLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CS.ApplicationVariables\CS.ApplicationVariables.csproj">
+      <Project>{622db1a2-487c-4306-b80c-f2940ed8a807}</Project>
+      <Name>CS.ApplicationVariables</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
